@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Q1:- time Optimization
+      function find(index) {
+        let a = [];
+        for (let i = 0; i < 1000000; i++) {
+          a[i] = i * i;
+        }
+
+        return function (index) {
+          console.log(a[index]);
+        };
+      }
+      const closure = find();
+      console.time("6");
+      closure(6);
+      console.timeEnd("6");
+      console.time("12");
+      closure(12);
+      console.timeEnd("12");
+
+      //   Q2: - SetTimeOut Question
+      function a() {
+        for (var i = 0; i < 3; i++) {
+          //output is 3 of 3 time bcz of var is in function scope to solve this just replace var to let then output will be 0,1,2
+          setTimeout(function () {
+            console.log(i);
+          }),
+            i * 1000;
+        }
+      }
+      a();
+
+      //using closure type-2
+      for (var i = 0; i < 3; i++) {
+        function inner(i) {
+          setTimeout(() => console.log(i)), i * 1000;
+        }
+        inner(i); //i is local variable
+      }
+
+      //Q3:-  How world you use a closure to create a private counter
+      function counter() {
+        var _counter = 0;
+
+        function add(increment) {
+          _counter += increment;
+        }
+        function retrive() {
+          return "Counter = " +  _counter;
+        }
+        return{
+          add,
+          retrive
+        }
+      }
+      const c=counter()
+      c.add(10);
+      c.add(5);
+      console.log(c.retrive());
+      
+    </script>
+  </body>
+</html>
