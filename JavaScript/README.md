@@ -18,6 +18,14 @@ JavaScript interview Question
         - Local scope
         - Outer function scope
         - Global Scope
+# Difference between closure & Scope
+Whenever you created a function with in another function there inner function is called closure.This closure is usually return, so we can use outer function variable at a later time
+ where scope is a defined what variable you have access to.
+ there are two kind of scope
+ global & Local
+ in case of closure - global, outer local scope
+
+
 
 
 
